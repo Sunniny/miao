@@ -10,12 +10,12 @@
   <h1>Lorem</h1>
   <h2>Lorem,ipsum.</h2>
   <h3>Lorem,ipsum dolor.</h3>
-  <p>
+  <p style="color: pink">
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam porro adipisci unde optio sit maxime nihil mollitia consequuntur, enim dolorem explicabo accusantium? Optio nulla atque, ducimus illo aliquam a vitae?
   </p>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus voluptate nihil dignissimos! Totam, quae. Laudantium impedit vel officia harum debitis ullam reiciendis, itaque ducimus fugiat dolorem quis. Explicabo, non eum.
+  <p style="color: antiquewhite;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus voluptate nihil dignissimos! Totam, quae. Laudantium impedit vel officia harum debitis ullam reiciendis, itaque ducimus fugiat dolorem quis. Explicabo, non eum.
   </p>
-  <p>Lorem ipsum dolor sit amet,consectetur adipisicing elit.Qui,quasi</p>
+  <p style="color: cadetblue;">Lorem ipsum dolor sit amet,consectetur adipisicing elit.Qui,quasi</p>
   <a href="http://www.jd.com" target="_blank">在新窗口打开京东</a>
   <a href="mailto:xxx@aaa.com?subject=2&content=3">点我发送邮件</a>
   <a href="#button">跳到页面底部</a>
@@ -39,6 +39,157 @@
   }
   </code>
 </pre>
+<hr>
+<ul>
+  <li>小学
+    <ol>
+      <li>一年级
+        <ol>
+          <li>上学期</li>
+          <li>下学期</li>
+        </ol>
+      </li>
+      <li>二年级</li>
+      <li>三年级</li>
+    </ol>
+  </li>
+  <li>中学</li>
+  <li>大学</li>
+</ul>
+<hr>
+<dl>
+  <dt>班级 </dt>
+  <dd>三年二班</dd>
+
+  <dt>老师</dt>
+    <dd>张老师</dd>
+    <dd>王老师</dd>
+    <dd>李老师</dd>
+
+  <dt>学生</dt>
+  <dd>小明</dd>
+  <dd>豆豆</dd>
+</dl>
+<hr>
+<h2>Google搜索</h2>
+<form >
+
+<!-- </form> -->
+<!-- <form action="https://www.google.com" method="get" target="_blank"> -->
+  <!-- <input type="搜索一下" name="search">
+  <!-- <input type="button" name="search" value="在新窗口打开搜索结果" class="btn" onclick="window.open('https://www.baidu.com/')"/>  -->
+<!-- </form> -->
+<form action="https://www.google.com/search" target="_blank">
+  <input type="text" name="q">
+  <!-- https://www.google.com/search?q=opq&oq=opq&aqs=chrome..69i57.1987j0j15&sourceid=chrome&ie=UTF-8 -->
+  <input type="text" name="sourceid" value="chrome" hidden>
+  <input type="text name="ie" value="UTF-8" hidden>
+  <button type="submit">在新窗口打开搜索结果</button>
+</form>
+<hr>
+<form >
+  <p>个人信息调查表</p>
+  <dl>
+    <dt>性别</dt>
+    <dd>
+     <label> <input type="radio" name="gender" value="male"> 男</label>
+     <label> <input type="radio" checked name="gender" value="female"> 女</label>
+    </dd>
+    <dt>年龄</dt>
+    <dd>
+<select name="age" >
+  <option selected>请选择</option>
+  <optgroup label="少年">
+<option value="age1">1-6岁</option>
+<option value="age2">7-12岁</option>
+  </optgroup>
+
+  <optgroup label="青年">
+   <option value="age3">13-18</option>
+   <option value="age4">19-30</option>
+  </optgroup>
+
+  <optgroup label="中年">
+    <option value="age5">31-38</option>
+    <option value="age6">39-55</option>
+
+  </optgroup>
+</select>
+    </dd>
+    <dt>生日</dt>
+    <dd>
+      <input type="date" value="2020-12-11">
+    </dd>
+    <dt>生辰</dt>
+    <dd><input type="time"></dd>
+    <dt>照片</dt>
+    <dd><input type="file" hidden id="buttonHidden"></dd>
+    <label for="buttonHidden"> 选择文件,我比按钮好看</label>
+    <dt>自我介绍</dt>
+    <textarea name="intro" id="" cols="30" rows="10" >&lt;/textarea></textarea>
+</dl>
+<fieldset disabled>
+  <legend>这里全部禁用了
+  </legend>
+
+      <input type="text">
+      <input type="text"> 
+      <input type="text" >
+
+
+</fieldset>
+
+<input type="submit"><input type="reset">
+</form>
+<hr>
+<table  border="1">
+  <col>
+  <col bgcolor="red">
+  <thead>
+ <tr>
+  <td>编号</td>
+  <td >品名</td>
+  <td>进价</td>
+  <td>出价</td>
+</tr>
+<tr>
+  <td>aaa</td>
+  <td>a</td>
+  <td rowspan="2">a</td>
+  <td>a</td>
+</tr>
+<tr>
+  <td>a</td>
+  <td>a</td>
+  <td>a</td>
+</tr>
+<tr>
+  <td>a</td>
+  <td>a</td>
+  <td>a</td>
+  <td>a</td>
+</tr>
+<tr>
+  <td>a</td>
+  <td>a</td>
+  <td>a</td>
+  <td>a</td>
+</tr>
+  </thead>
+</table>
+<hr>
+<img src="https://drscdn.500px.org/photo/174778125/m%3D1170_k%3D1/2841ccf2a3720e8e794a6a6930f6ff2c" width="300" alt="" usemap="#mao">
+  <map name="mao">
+    <area shape="rect" coords="50,81,200,172" href="" alt="" target="_blank">
+    <area shape="circle" coords="128,252,96" href="" alt="" target="_blank">
+  </map>
+<hr>
+<a target="qiehuan" href="https://www/mi.com/">小米</a>
+<div></div>
+  <iframe name="qiehuan" src="https://nodejs.org/en" frameborder="0"></iframe>
+<p>aaa&nbsp;&nbsp;bbb</p>
+<pre>aaa  bbb</pre>
 <div id="button"></div>
+<p>>>>>>>>>>>>>><<<<<<<<<<<<< &lt;span&gt;&lt;/span&gt;</p>
 </body>
 </html>
