@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html {
+      height: 100%;
+    }
+    body {
+      margin: 0;
+      font-size: 0;
+      height: 100%;
+    }
+    .aside {
+      display:inline-block ;
+      height: 100%;
+      width: 200px;
+      background-color: aqua;
+      border-right: 1px solid;
+      box-sizing: border-box;
+      overflow: scroll;
+    }
+    /* .search {
+      display: inline-block;
+      height: 200px;
+      background-color: bisque;
+    }
+    .bar {
+      display: inline-block;
+      height: calc(100% - 200px);
+      overflow: scroll;
+    } */
+    .main {
+      background-color: pink;
+      display: inline-block;
+      height: 100%;
+      width: calc(100% - 600px);
+box-sizing: border-box;
+border-right: 1px solid;
+
+    }
+    .top {
+      height: 100px;
+      background-color: yellow;
+      border-bottom: 1px solid;
+      box-sizing: border-box;
+    }
+    .down {
+      height: calc(100% - 100px);
+      background-color: blueviolet;
+      overflow: scroll;
+    }
+    .aside-right1 {
+      display: inline-block;
+      height: 100%;
+      background-color:coral;
+      width: 200px;
+      border-right: 1px solid;
+      box-sizing: border-box;
+    }
+    .aside-right2 {
+      display: inline-block;
+      height: 100%;
+      background-color: coral;
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 侧边栏 -->
+<span class="aside">
+  <!-- <span class="search"></span>
+  <span class="bar"></span> -->
+
+</span>
+  <!-- 主体区 -->
+ <span class="main">
+  <div class="top"></div>
+  <div class="down"></div>
+ </span>
+  
+  <!-- 第三个区块 -->
+  <div class="aside-right1"></div>
+  最后一个区块
+  <div class="aside-right2"></div>
+</body>
+</html>
