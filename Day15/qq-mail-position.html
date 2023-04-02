@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    html{
+  height:100%;
+} 
+body {
+  margin:0;
+   height:100%;
+   min-width: 800px;
+} 
+header {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+height:100px;
+background-color: skyblue;
+border-bottom: 2px solid;
+}
+
+main{
+  position:relative;
+  height:calc(100% - 100px);
+}
+.left {
+  position:absolute;
+  left:0;
+  top:0;
+  height:100%;
+  width:200px;
+  background-color: pink;
+  /* overflow:auto; */
+  overflow: scroll;
+  border-right: 2px solid;
+
+}
+.right {
+  position:absolute;
+  left:200px;
+  top:0;
+  height:100%;
+  width:calc(100% - 200px);
+  background-color:khaki;
+    /* overflow:auto; */
+  overflow: scroll;
+  min-width: 400px;
+
+}
+  </style>
+</head>
+<body>
+  <header>QQ邮箱</header>
+<main>
+  <span class="left">左侧列表区</span>
+  <span class="right">展示区</span>
+</main>
+</body>
+</html>
