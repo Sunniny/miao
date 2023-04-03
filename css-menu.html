@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .menu {
+  font-size:0;
+  padding:0;
+  margin:0;
+}
+.menu>li {
+  font-size:16px;
+
+  display:inline-block;
+
+}
+.menu li {
+  text-align: center;
+  position:relative;
+  white-space:nowrap;
+  border:2px solid yellow;
+  color: green;
+  margin-bottom: 1px;
+}
+.menu ul {
+  position:absolute;
+  list-style:none;
+  top:100%;
+  left:0;
+  padding:0;
+  display:none;
+}
+.menu ul li:has(>ul)::after {
+  content: '>';
+}
+.menu ul ul {
+ top:0;
+  left:100%;
+}
+.menu li:hover {
+  background-color: yellow;
+}
+.menu li:hover>ul {
+  display:block;
+}
+  </style>
+</head>
+<body>
+  <ul class="menu">
+    <li>中餐
+    <ul>
+      <li>面条
+      <ul>
+        <li>红烧牛肉面</li>
+        <li>番茄鸡蛋面</li>
+  
+      </ul>
+      </li>
+       <li>饺子
+      <ul>
+        <li>芥菜肉馅</li>
+        <li>羊肉大葱馅</li>
+        <li>韭菜鸡蛋馅</li>
+        <li>香菇青菜馅</li>
+      </ul>
+      </li>
+      <li>米饭
+      <ul>
+        <li>青椒肉丝套餐</li>
+       <li>鱼香肉丝套餐</li>
+      <li>老鸭树菇套餐</li>
+  </ul>
+      </li>
+  
+    </ul>
+    </li>
+    <li>西餐
+      <ul>
+        <li>意面</li>
+        <li>披萨</li>
+        <li>牛排
+        <ul>
+          <li>三分熟</li>
+          <li>五分熟</li>
+          <li>七分熟</li>
+          <li>全熟</li>
+        </ul></li>
+  
+      </ul>
+    </li>
+  </ul>
+</body>
+</html>
