@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,body {
+  margin:0;
+  padding:0;
+  height:100%;
+}
+.wrapper {
+  height:100%;
+}
+.wrapper .left,.right1,.right2 {
+  float:left;
+  height:100%;
+  width:200px;
+  background-color: pink;
+  border-right:2px solid;
+  box-sizing:border-box;
+}
+.wrapper .right2 {
+  border-right:none;
+}
+.wrapper .left {
+  overflow-y:scroll;
+}
+.wrapper .main {
+  float:left;
+  width:calc(100% - 600px);
+  height:100%;
+  background-color: skyblue;
+   box-sizing:border-box;
+  border-right:2px solid;
+}
+.wrapper .main .top {
+  height:100px;
+  background-color: green;
+  border-bottom:2px solid;
+  box-sizing:border-box;
+}
+.wrapper .main .buttom {
+  height:calc(100% - 100px);
+  background-color: yellow;
+  overflow-y:scroll;
+}
+
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="left"></div>
+    <div class="main">
+      <div class="top"></div>
+       <div class="buttom"></div>
+    </div>
+    <div class="right1"></div>
+    <div class="right2"></div>
+  </div>
+</body>
+</html>
