@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+body,html {
+  height:100%;
+  margin:0;
+  box-sizing:inherit;
+  box-sizing:border-box;
+}
+
+.wrapper {
+  height:100%;
+  display:grid;
+   grid-template-columns: 200px 1fr;
+  grid-template-rows: 100px 1fr;
+ background-color: skyblue;
+}
+
+header {
+  grid-column:1 / span2;
+  background-color: pink;
+  border-bottom:1px solid;
+   text-align:center;
+  line-height:100px;
+}
+
+.aside {
+  grid-row-start:2;
+  background-color: green;
+  border-right:1px solid;
+  overflow-y:scroll;
+}
+
+.main {
+  overflow-y:scroll;
+}
+
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      QQ邮箱
+    </header>
+      <div class="aside">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime doloribus accusantium fugit quod accusamus ex consequuntur laudantium ipsum placeat ab nemo, alias quos vel, odit deserunt commodi officia iste doloremque amet voluptas voluptates? Vel delectus voluptates quis amet ea iure repellat dolores. Eos nesciunt exercitationem id fugit incidunt laudantium, temporibus.</div>
+      <div class="main">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos fugiat aliquam officiis laudantium cum, at, animi obcaecati vel aliquid officia laboriosam excepturi? Reiciendis itaque iusto quibusdam ut animi tempore iure totam pariatur commodi, architecto fugit quos voluptatem ipsa. Natus ea, et rerum illo fugiat. Doloribus saepe voluptate odio adipisci asperiores, ducimus eum facilis voluptatem dolores, deleniti eligendi! Quos rem repellendus eius, illum aliquid suscipit laborum totam facere, consectetur beatae deleniti commodi possimus quis quasi. Aliquid placeat ipsam cumque excepturi commodi repellendus eligendi odio distinctio odit ducimus quia, quisquam, maxime vitae totam itaque enim quaerat, quibusdam omnis adipisci et. Animi, cupiditate.</div>
+    </div>
+</body>
+</html>
