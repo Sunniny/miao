@@ -1,0 +1,122 @@
+/* 利用绝对定位实现配合margin实现 只定位左50%,和上50%时,会出现在偏离右下角的位置,需要再给自身一个-margin值为子盒子宽高的一半 */
+.father1 {
+  position:relative;
+  height: 400px;
+  width: 400px;
+  background-color: green;
+}
+
+.child1 {
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-top:-50px;
+  margin-left:-50px;
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+
+/* 在法一的基础上 直接使用绝对定位 用calc 计算出偏移数值 实现水平垂直居中 */
+.father2 {
+  position:relative;
+  height: 400px;
+  width: 400px;
+  background-color: green;
+}
+
+.child2 {
+  position:absolute;
+  width: 100px;
+  height: 100px;
+  background-color: orange;
+  top:calc(50% - 50px);
+  left:calc(50% - 50px);
+
+}
+/* 在法一的基础上 使用坐标平移50% 实现水平处置居中 */
+.father3 {
+  position:relative;
+  height: 400px;
+  width: 400px;
+  background-color: green;
+}
+
+.child3 {
+  position:absolute;
+  width: 100px;
+  height: 100px;
+  background-color: yellow;
+  transform:translate(-50%,-50%);
+  left:50%;
+  top:50%;
+
+} 
+
+/* 利用margin auto实现配合绝对定位 margin:auto只能实现水平居中,要想垂直居中.需要子绝父相之后,再设置子盒子的上下左右都是0*/
+
+.father4 {
+  position:relative;
+  height: 400px;
+  width: 400px;
+  background-color: green;
+}
+
+.child4 {
+  position:absolute;
+  margin:auto;
+  width: 100px;
+  height: 100px;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background-color: greenyellow;
+}
+
+/* 利用弹性布局flex实现 使用justify-content:center;及align-items:center*/
+.father5 {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height: 400px;
+  width: 400px;
+  background-color: green;
+}
+
+.child5 {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+}
+/* 利用grid布局实现 作用子元素 */
+
+.father6 {
+display:grid;
+  height: 400px;
+  width: 400px;
+  background-color: green;
+}
+
+.child6 {
+  /* align-self:center; */
+  margin:auto;
+  width: 100px;
+  height: 100px;
+  background-color:Indigo;
+}
+/* 利用grid布局 作用父元素  使用justify-content:center */
+.father7 {
+display:grid;
+  justify-content:center;
+  align-items:center;
+  height: 400px;
+  width: 400px;
+  background-color: green;
+}
+
+.child7 {
+  width: 100px;
+  height: 100px;
+  background-color: purple;
+}
