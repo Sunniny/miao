@@ -376,6 +376,175 @@ input:nth-child(5):checked ~ .indicators label:nth-child(5)
 {
   background-color: rgb(255, 255, 255);
 }
+.service {
+  /* height: 185px;
+  width: 235px; */
+  height: 185px;
+  /* background-color: gray; */
+}
+.service .wraper {
+  position: relative;
+  margin: auto;
+  height: 185px;
+  width: 1226px;
+  /* background-color: pink; */
 
+}
+.service .wraper .left {
+  position: relative;
+  height: 185px;
+  width: 235px; 
+}
+.service .wraper .left .items {
+  position: absolute;
+  top:15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  height: 170px;
+  width: 235px; 
+  background-color: #333;
+  } 
+.service .wraper .left .items .item {
+
+  text-align: center;
+  display: inline-block;
+  border: 1px solid;
+}
+.service .wraper .left .items .item img{
+ 
+  margin-top: 18px;
+  height: 24px;
+  width: 24px;
+}
+.service-text {
+  display:block;
+  font-size: 12px;
+  color:#fff;
+  font-style: normal;
+}
+.service .wraper .left .items .item:hover>i{
+  /* background-color: green; */
+  color: aquamarine;
+}
+.service .wraper .left .items .item:hover>img{
+  /* background-color: aquamarine; */
+
+}
+
+/* 右侧布局 */
+.right {
+ position: absolute;
+ right: 0;
+ top:15px;
+  width:calc(1226px - 235px);
+  height: 170px;
+  /* background-color: yellowgreen; */
+}
+.right .items {
+display:flex;
+justify-content: space-evenly;
+}
+.right .items .item {
+  height: 170px;
+  width: 316px;
+  background-color: purple
+  ;
+}
+.right .items .item img{
+  height: 170px;
+  width: 316px;
+}
+.right .items .item:hover >img {
+  box-shadow: 5px 5px 10px 10px rgba(105,101,101,.3);
+}
+  /* 中部长图片样式 */
+.long-photo {
+  height:120px;
+  width:1226px;
+  margin: 22px auto;
+}
+/* 家电部分开始 */
+.nav {
+  display: flex;
+  width: 1226px;
+  margin:auto;
+  justify-content: space-between;
+}
+.nav .left-font {
+  font-size: 22px;
+  font-weight: 200;
+  line-height: 58px;
+  color: #333;
+}
+.nav .right-font a {
+  font-size: 16px;
+  color: #424242;
+
+}
+.household {
+display: flex;
+  width: 1226px;
+  height: 614px;
+  margin: auto;
+  background-color: pink;
+}
+.household .img {
+  height: 300px;
+  width: 234px;
+}
+.household .left {
+
+  height: 614px;
+  width: 234px;
+  background-color: green;
+}
+.household .left .items {
+  display: grid;
+  height: 614px;
+  width: 234px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+}
+.household .left .items .item {
+  /* box-sizing: border-box; */
+  /* border: 1px solid; */
+}
+
+.household .right-r {
+  height: 614px;
+  width: 992px;
+  background-color:skyblue;
+}
+.household .right-r .items {
+  display: grid;
+  height: 614px;
+  width: 992px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+
+}
+.household .right-r .items .item {
+  display: inline-block;
+}
+.household .right-r .items .item:hover {
+  box-shadow: 0 15px 30px rgb(0 0 0 / 50%);
+  transform: translate3d(0,-2px,0);
+}
+.household .left .items .item:hover {
+  box-shadow: 0 15px 30px rgb(0 0 0 / 50%);
+  transform: translate3d(0,-2px,0);
+}
+.household .right-r {
+  height: 614px;
+  width: 992px;
+  background-color:yellow;
+}
+
+
+
+/* 家电部分结束 */
 
 
