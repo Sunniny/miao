@@ -259,26 +259,92 @@ position: relative;
 }
 
 /* ----------------轮播图----------- */
+@keyframes leave {
+  from {
+    left:0;
+  }
+  to {
+    left:100%;
+  }
+}
 .slider {
-  width: 100%;
+  width: 1226px;
   height: 460px;
   position: relative;
   overflow: hidden;
   background-color: rgb(239, 233, 225);
+  display: flex;
 }
 
-.slider img {
+
+.sec-img {
+  height: 460px;
+  width:20%;
+  position: relative;
+  /* border: 1px solid; */
+  overflow: hidden;
+
+}
+/* 离场图片 */
+.sec-img span {
+  position: absolute;
+  height: 100%;
+  width:100%;
+background-size: 1226px 460px;
+  left:-100%;
+  transition:1s;
+  animation: leave 1s;
+}
+.slider .sec-img:nth-of-type(1) > span{
+
+
+  background-position: -234px;
+
+  }
+
+.slider .sec-img:nth-of-type(2) > span{
+
+  background-position: -432.4px;
+
+
+}
+.slider .sec-img:nth-of-type(3) > span{
+  background-position: -630.8px;
+}
+.slider .sec-img:nth-of-type(4) > span{
+  background-position: -829.2px;
+
+
+}
+.slider .sec-img:nth-of-type(5) > span{
+
+  background-position: -1027.6px;
+}
+
+/* .slider img {
   width: 1226px;
   height: 460px;
   position: absolute;
   opacity: 0;
   transition: all .5s ease-in-out;
 
+} */
+
+/* input:checked + * + * + * + * + *{
+  opacity: 1;
+} */
+/* 进场图片  */
+.slider input:nth-child(1):checked ~ .sec-img span:nth-child(1),
+.slider input:nth-child(2):checked ~ .sec-img span:nth-child(2),
+.slider input:nth-child(3):checked ~ .sec-img span:nth-child(3),
+.slider input:nth-child(4):checked ~ .sec-img span:nth-child(4),
+.slider input:nth-child(5):checked ~ .sec-img span:nth-child(5) {
+ left:0;
+ z-index: 99;
+ animation: none;
+ transition-duration:0.6s
 }
 
-input:checked + * + * + * + * + *{
-  opacity: 1;
-}
 
 input {
   display: none;
@@ -325,7 +391,7 @@ input {
   background-color: gray;
   border-radius: 5px;
 }
-
+/* 左右箭头的设置--------? */
 .slider .next:hover > i,
 .slider .prev:hover > i {
   color:#fff;
@@ -345,14 +411,15 @@ input:nth-child(1):checked ~ .prev-next label:nth-child(4) {
 }
 
 
-
+/* 选择器定位 */
 .indicators {
   position: absolute;
   bottom: 20px;
   right: 20px;
-  z-index: 1;
-}
+  z-index: 9999999;
 
+}
+/* 设置按钮样式 */
 .indicators label {
   display: inline-block;
   width: 10px;
@@ -363,11 +430,12 @@ input:nth-child(1):checked ~ .prev-next label:nth-child(4) {
   text-indent: -9999px;
   cursor: pointer;
 }
-
+/* 按钮被hover时  变色 */
 .indicators label:hover {
   background-color: rgb(255, 255, 255);
 }
-
+ 
+/* 不被hover时 只要有当前选中的input 按钮也会改变颜色 */
 input:nth-child(1):checked ~ .indicators label:nth-child(1),
 input:nth-child(2):checked ~ .indicators label:nth-child(2),
 input:nth-child(3):checked ~ .indicators label:nth-child(3),
@@ -376,6 +444,9 @@ input:nth-child(5):checked ~ .indicators label:nth-child(5)
 {
   background-color: rgb(255, 255, 255);
 }
+
+
+/* em */
 .service {
   /* height: 185px;
   width: 235px; */
@@ -427,10 +498,7 @@ input:nth-child(5):checked ~ .indicators label:nth-child(5)
   /* background-color: green; */
   color: aquamarine;
 }
-.service .wraper .left .items .item:hover>img{
-  /* background-color: aquamarine; */
 
-}
 
 /* 右侧布局 */
 .right {
