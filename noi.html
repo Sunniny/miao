@@ -13,11 +13,11 @@ console.log(c)
   console.log(d)
 </script>
 
-<script id="ch0103/03" >
+  <script id="ch0103/03">
   var a = +prompt('a')
   var b = +prompt('b')
   var c = +prompt('c')
-  var d = (a + b) / c
+  var d = Math.floor((a + b) / c)
   console.log(d)
 </script>
 
@@ -90,11 +90,12 @@ console.log(c)
         </script>
 
         <script  id="ch0103/13" >
-          var a = +prompt('')
-          var b = a % 100 % 10//个位数
-          var c = a % 100 / 10 //十位数
-          var d = a / 100 //百位数
-          console.log(b | 0 , c | 0 , d | 0)
+        var n = +prompt('n')
+        var one = n % 10 
+        var two = n % 100 - one   
+        var three =n-(n % 100) 
+        var s = one*100 + two+ three/ 100 
+        console.log(s)
         </script>
 
         <script  id="ch0103/14" >
