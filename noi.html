@@ -89,13 +89,14 @@ console.log(c)
           console.log(V)
         </script>
 
+    
        <script  id="ch0103/13" >
          var n = +prompt('n')
          var one = n % 10 
-         var two = (n % 100 - one) / 10
-         var three =(n - (n % 100))/ 100
-         console.log(one,two,three)
-         </script>
+         var two = (n-one)/10 %10
+         var three =((n - one)-two * 10)/ 100
+         console.log('' + one + two + three)
+        </script>
 
         <script  id="ch0103/14" >
            var Pi = 3.14159
@@ -112,7 +113,7 @@ console.log(c)
           var y = +prompt('y')
           var s = Math.floor(n - y / x ) 
           console.log(s)
-                  </script>
+        </script>
 
         <script id="ch0103/16">
           var Xa = +prompt('Xa')
