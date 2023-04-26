@@ -159,6 +159,291 @@ console.log(c)
             var s = 2**n
             console.log(s)
           </script>
+          <!-- ----------------------------------------------------1.4------------------------------------------------ -->
+          <script id="ch0104/01" type="2">
+            var n = +prompt('n')
+          if (n >0) {
+          console.log('positive')
+          }
+          else if(n < 0 ){
+            console.log('negative')
+          }
+          else {
+            console.log('zero')
+          }
+          </script>
+          
+          <script id="ch0104/02" type="4" >
+            var n = +prompt('n')
+          if (n >= 0){
+          console.log(n.toFixed(2))
+          }
+          else {
+            console.log((n *(-1)).toFixed(2))
+          }
+          </script>
+          
+          <script id="ch0104/03" type="3">
+            var n = +prompt('n')
+            if (n % 2 ==0) {
+              console.log('even')
+            }
+            else{
+              console.log('odd')
+            }
+          </script>
+          
+          <script id="ch0104/04" TYPE="1">
+            var x = prompt('字母')
+            var num = x.charCodeAt(0)
+            if (num % 2 == 1){
+             console.log('YES')
+            }
+            else {
+              console.log('NO')
+            }
+            </script>
+          
+          <script id="ch0104/05" type="5">
+            var x = +prompt('x')
+            var y = +prompt('y')
+          if (x > y) {
+            console.log('>')
+          }
+          else if(x == y){
+            console.log('=')
+          }
+          else {
+            console.log('<')
+          }
+            </script>
+          
+          <script id="ch0104/06" type="6" >
+            var x = +prompt('x')
+            console.log( (x >= 10&& x <= 99)?'1':'0')
+          </script>
+          
+          <script id="ch0104/07" type="7">
+            var x = +prompt('幸运的瓶盖数是')
+            var y = +prompt('鼓励的瓶盖数是')
+          if (x>10||y>20) {
+            console.log('1')
+          }
+          else {
+            console.log('0')
+          }
+            </script>
+          
+           <script id="ch0104/08" type="8">
+             var x = +prompt('请输入一个数')
+           if (x % 15 == 0) {
+             console.log('YES')
+           }
+           else {
+             console.log('NO')
+           }
+             </script>
+          <script id="ch0104/09" type="9">
+                    var x = +prompt('请输入一个数')
+                    if(x % 105 == 0){
+                      console.log('3','5','7')
+                    }
+          else if (x % 15 == 0 && x % 7!=0) {
+                    console.log('3','5')
+          }
+          else if (x % 21 ==0 && x % 5 != 0) {
+                    console.log('3','7')
+          }
+          else if (x % 35 ==0 && x % 3 != 0) {
+                    console.log('5','7')
+          }
+          else if(x % 3 == 0 && x % 5 && x %7 != 0){
+                    console.log('3')
+          }
+          else if(x % 5 == 0 && x % 3 && x %7 != 0){
+                    console.log('5')
+          }
+          else if(x % 7 == 0 && x % 3 && x %5 != 0){
+                    console.log('7')
+          }
+          else {
+                    console.log('n')
+          }
+           </script>
+          
+           <script id="ch0104/10" type="10">
+            var x = +prompt('请输入语文成绩')
+            var y = +prompt('请输入数学成绩')
+             if(x < 60 && y >= 60 || x >= 60 && y < 60) {
+             console.log('1')
+             }
+             else {
+             console.log('0')
+             }
+           </script>
+          
+           <script id="ch0104/11" TYPE="1" >
+            var x = +prompt('请输入数字星期几')
+          if (x ==1 || x == 3 ||x==5){
+            console.log('NO')
+          }
+          else {
+            console.log('YES')
+          }
+           </script>
+          
+           <script id="ch0104/12"  type="12">
+            var x = +prompt('请输入路程是多少米')
+          var Bike = x / 3 + 50
+          var Walk = x / 1.2
+          if (Bike > Walk){
+            console.log('Walk')
+          }
+          else if ( Bike < Walk) {
+            console.log('Bike')
+          }
+          else {
+            console.log('All')
+          }
+           </script>
+          
+           <script id="ch0104/12" >
+          
+           </script>
+          <script id="ch0104/13" type="5">
+            var x = +prompt('x')
+          if (x >= 0 && x < 5){
+            fn = (-x + 2.5)
+          console.log(fn.toFixed(3))
+          }
+          else if (x >=5 && x < 10){
+            fn = (2-1.5*(x-3)*(x-3))
+          console.log(fn.toFixed(3))
+          }
+          else if(x >=10 && x<20){
+            fn = x / 2-1.5
+          console.log(fn.toFixed(3))
+          }
+          </script>
+          
+          
+          <script id="ch0104/14" TYPE="1">
+            var x = prompt('请输入包裹重量')
+            var y = +prompt('请输入是否加急(n代表不加急,y代表加急)')
+          var price = 8
+            if (x <= 1000 ){
+            console.log( (y === "n" ) ? price : price + 5)
+            }
+            else {
+             console.log( (y === "n") ? Math.ceil((x-1000)/500)*4 + price : Math.ceil((x-1000)/500)*4 +price + 5 )
+            }
+            </script>
+          
+          <script id="ch0104/15" type="15">
+            var x = +prompt('x')
+            var y = +prompt('y')
+            var z = +prompt('z')
+            if (x>y&&x>z) {
+              console.log(x)
+            }
+            if (y>x&&y>z) {
+              console.log(y)
+            }
+            if (z>x&&z>y){
+              console.log(z)
+            }
+          </script>
+          <script id="ch0104/16" TYPE="1">
+            var x = +prompt('x')
+            var y = +prompt('y')
+            var z = +prompt('z')
+            if ( (x + y > z) && (x + z >y) && (y + z >x) ) {
+              console.log('yes')
+            }
+            else {
+              console.log('no')
+            }
+          </script> 
+          
+          <script id="ch0104/17" type="1">
+          var a = +prompt('a')
+          if (a%4==0 || (a %100 ==0 && a%400!==0) ){
+            console.log('Y')
+          }
+          else {
+            console.log('N')
+          }
+          </script>
+          
+          <script id="ch0104/18" type="1">
+            var x = +prompt('x')
+            var y = +prompt('y')
+            if (x>=-1 &&x<=1 &&y>=-1&&y<=1) {
+              console.log('yes')
+            }
+            else {
+              console.log('no')
+            }
+            </script>
+          
+            <script id="ch0104/19" type="1">
+              var x = +prompt('x')
+              var y = +prompt('y')
+              var s = prompt('请输入操作符') //操作符
+              if (s === "+"){
+              console.log(x + y)
+              }
+              if(s==="-"){
+                console.log(x-y)
+              }
+              if(s==="*"){
+                console.log(x*y)
+              }
+              if(s==="/"){
+                if(y==0){
+                  console.log('Divided by zero!')
+                }
+                else {
+                  console.log(x / y)
+                }
+              }
+              if(s!=="+"&&s!=="-"&&s!=="*"&&s!=="/"){
+                console.log('Invalid operator!')
+              }
+              </script>
+              <script ch0104/20>
+               var a = +prompt('a')
+               var b = +prompt('b')
+               var c = +prompt('c')
+               var shi = (-b / (2*a)).toFixed(5)
+               var xu =( Math.sqrt(4*a*c - b * b) / (2 * a)).toFixed(5)
+               var x1 = ((-b + Math.sqrt(b*b - 4*a*c)) / (2*a)).toFixed(5)
+               var x2 = ((-b - Math.sqrt(b*b - 4*a*c)) / (2*a)).toFixed(5)
+               if (b*b ==4*a*c) {
+                console.log("x1=x2=" + x1)
+               }
+               if(b*b > 4*a*c) {
+                console.log("x1=" + x1 + ",x2=" + x2)
+               }
+               if(b*b < 4 * a * c){
+                console.log("x1="+shi+"+" + ((+xu).toFixed(5)+'i')+",x2="+shi+"-" + ((+xu).toFixed(5)+'i'))
+               }
+          
+              </script>
+          
+          <script id="ch0104/21" type="1">
+            var n = +prompt('n')
+            var x = +prompt('x')
+            var y = +prompt('y')
+            var S = Math.floor(n - y/x)
+            console.log(S)
+          </>
+          
+          
+          
+          
+          
+          
 
 
 
