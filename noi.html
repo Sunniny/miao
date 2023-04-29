@@ -494,7 +494,7 @@ for (i=1;i<=n;i++){
 sum += +prompt('请输入第'+(+i)+"个整数")
 }
 average = (sum / n).toFixed(5)
-console.log(sum.toFixed(5),average)
+console.log(sum,average)
 </script>
 
 
@@ -502,6 +502,7 @@ console.log(sum.toFixed(5),average)
   // debugger
   var n = +prompt('n')
   var i =1  //i
+  var max=0
   while(i <=n){
   var score = +prompt('请输入第'+(+i)+'个学生成绩')
   if(max < score){
@@ -603,7 +604,10 @@ console.log(sum)
         }
         
         }
-        console.log(num1+'\n',num5+'\n',num10+'\n')
+        console.log(num1)
+        console.log(num5)
+        console.log(num10)
+
       </script>
 
     <script  id="ch0105/12" type="1">
@@ -744,9 +748,8 @@ for(var i = 1; i <= 10; i++){
 total += height * 2
 height = height / 2 
 }
-console.log(total)
-console.log(height)
-
+console.log(total.toFixed(4))
+console.log(height.toFixed(7))
 
 </script>
 
@@ -867,17 +870,7 @@ console.log(a)
  }
   </script>
 
-  <script id="ch0105/28" type="1">
-    var k = +prompt('k')
-    var Sn = 0
-    for (var n=1; ;n++){
-     Sn += 1 / n
-     if(Sn > k){console.log(n)
-     break}
-    }
-     </script>
-
-     <script id="ch0105/29" type="1">
+     <script id="ch0105/28" type="1">
       var n = +prompt('n')
       var a 
       do{//使用do 可以刨除第一次输入是0的限制,又可以只输入一次0
@@ -887,7 +880,7 @@ console.log(a)
        }while(n>0)
        </script>
 
-<script id="ch0105/29" type="1">
+<script id="ch0105/30" type="1">
 var m = +prompt('m')
 var k = +prompt('k')
 var num = 0//记录三的个数
@@ -1103,7 +1096,7 @@ if (a == 0){
   var n=+prompt()
   //先将质数依次输出,如果能被该质数整除 则跳出循环 输出另一个除数
 //即依次输出质数
-//如何判断是否是质数 除了1和本身之外 还有其他的除数
+
 </script>
 <script id="ch0105/44" type="no">
   var n = +prompt()
