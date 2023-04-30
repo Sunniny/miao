@@ -880,6 +880,28 @@ console.log(a)
        }while(n>0)
        </script>
 
+       <script id="ch0105/29"  type="1">
+        // debugger
+        var n = +prompt('n')
+        var a //记录每次的末位数
+        var num = 0 //记录输入数字的个数
+        var x = n//用于记录每次抛除末位后的数字
+        var printNum = 0
+        var j = 0//记录需要运算的10的个数
+      
+        while ((x | 0 )!=0){
+         x/=10
+          num++//得出该数是几位数
+        }
+         while(n>0 || -n >0){
+            a = n % 10//得出末位数
+            j++
+          printNum += a*10**(num-j) 
+          n = (n-a)/10 //将末尾的0去除再给n再次循环
+          }
+          console.log(printNum)
+         </script>
+
 <script id="ch0105/30" type="1">
 var m = +prompt('m')
 var k = +prompt('k')
