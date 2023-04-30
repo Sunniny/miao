@@ -833,8 +833,8 @@ for (i = 1;i<=n;i++){
 }
 console.log(max)
 </script>
-<script id="ch0105/25" type="1">
-  num
+<script id="ch0105/25">
+  for(var num = 81 ; num <= 342;num ++){
 var oneSeven = num % 49 % 7
 var twoSeven = (num - oneSeven)% 49 / 7
 var threeSeven = (num - twoSeven*7 - oneSeven)/49
@@ -842,7 +842,11 @@ var threeSeven = (num - twoSeven*7 - oneSeven)/49
 var oneNine = num % 81 % 9
 var twoNine = (num - oneNine)% 81 / 9
 var threeNine = (num - twoNine*9 - oneNine)/81
-
+if(oneSeven==threeNine&&twoSeven==twoNine&&threeSeven==oneNine){
+  console.log(num,''+threeSeven+twoSeven+oneSeven,''+threeNine+twoNine+oneNine)
+  break
+}
+  }
 </script>
 
 <script id="ch0105/26" type="1">
@@ -923,33 +927,40 @@ if(num == 3){
 </script>
 
 <script id="ch0105/31" type="no">
+  debugger
   var n = +prompt()//n栈灯
   var m = +prompt()//m个人
-  var open = true
+  var open = 1//初始开启状态
   // var num = 0
   for(var i = 1;i <= m;i++){
-  // num++
-  while(n%i==0){
-    // console.log(i)
-    if (open=true){
-      open=false
-    }
-    else {opne=true
-        }
   
+  // if(n % i==0){//只要
+  //  open=open*(-1)
+  // }
+  for(var j=1;j<=n;j++){
+    //如何记录每一个编号的倍数并进行取反操作
+    //n/1==0;n/2=0...n/n==0
+    if(j%m==0){
+      open=open*(-1)
+      open=open*(-1)
+      //如何把灯是关闭状态的编号记录下来
+    }
+  }
   // 第一个人关闭1的倍数:如何实现记录关闭的编号
-
   // 记录关闭的编号 关闭的灯 记为:open:false
   // 第二个人 遇到编号为2则做相反操作
   // 如果open为false 则将open置为true
   // 输出 如果open为false 则输出记录的编号
-
-
-      }
+  
   }
-  if(open==false){
-    console.log(i)
+  for(var i = 1;i <= m;i++){
+  while(i*j<=n){
+if(open==-1){
+  console.log(j)
+}
   }
+}
+<script/>
   
 </script>
 <script id="ch0105/32" type="1">
@@ -1114,22 +1125,45 @@ if (a == 0){
 }
 
 </script>
-<script id="ch0105/43" type="1">
+<script id="ch0105/43">
   var n=+prompt()
   //先将质数依次输出,如果能被该质数整除 则跳出循环 输出另一个除数
 //即依次输出质数
+var one = 0
+for(i=2;i<=Math.sqrt(n);i++){
+if (n%i==0){//如果能被除尽,那么这个数是质数
+  one = n/i
+}
+if(one>i){
+  console.log(one)
+}
+else{
+  console.log(i)
+}
+}
+</script>
 
-</script>
-<script id="ch0105/44" type="no">
-  var n = +prompt()
-  
+<script id="ch0105/444" type="no">
+  debugger
+  var n=+prompt()
+  var i 
+  var zhishu
   var num=0
-  while(num!=n){
-    for(var i =1;i<=n;i++){
-    
+  false=0
+  while(num<=n){
+  for(i=2;;i++){
+  for(var j=2;j<i;j++){
+    if(i%j==0){
+   false=0
+    }
+  }
+  if (false!=0){
+    num++
   }
   }
-</script>
+  }
+  console.log(zhishu)
+  </script>
 <script id="ch0105/45">
   // debugger
 var day = prompt()
