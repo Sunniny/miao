@@ -906,7 +906,7 @@ console.log(a)
           console.log(printNum)
          </script>
 
-<script id="ch0105/30" type="1">
+<script id="ch0105/30">
 var m = +prompt('m')
 var k = +prompt('k')
 var num = 0//记录三的个数
@@ -918,51 +918,46 @@ if(m % 19==0){
   num++
   m = (m-a) / 10
 }
-if(num == 3){
+if(num == k){
   console.log('YES')
+}else{
+  console.log('NO')
 }
 }else{
   console.log('NO')
 }
 </script>
 
-<script id="ch0105/31" type="no">
-  debugger
-  var n = +prompt()//n栈灯
-  var m = +prompt()//m个人
-  var open = 1//初始开启状态
-  // var num = 0
-  for(var i = 1;i <= m;i++){
+<script id="ch0105/31" type="ok">
+  // debugger
+  var n = +prompt()
+  var m = +prompt()
+  var count = 0
+  var result = ''
+  for(var light = 1; light<=n; light++){//light是灯的编号
+    var state = true
   
-  // if(n % i==0){//只要
-  //  open=open*(-1)
-  // }
-  for(var j=1;j<=n;j++){
-    //如何记录每一个编号的倍数并进行取反操作
-    //n/1==0;n/2=0...n/n==0
-    if(j%m==0){
-      open=open*(-1)
-      open=open*(-1)
-      //如何把灯是关闭状态的编号记录下来
+    for( var person = 1;person<=m;person++ ){//person代表人的编号
+      if(light % person == 0){//每一轮 当灯的编号是人的编号的倍数.则切换灯的状态.
+        //灯是外循环,一直往后走.因为每一盏灯都会人的编号从一开始筛选,所以内循环每次都从1开始.
+      state=!state//切换状态
+    }
+    }
+  
+    if(state==false){//因为每一盏灯都是往后走的,所以每一盏灯的状态,内循环走完不会改变,故在此处直接输出符合灯的编号.
+    // console.log(light)
+    count++
+    if(count==1){
+      result+=''+light
+    }else{
+      result+=','+light
     }
   }
-  // 第一个人关闭1的倍数:如何实现记录关闭的编号
-  // 记录关闭的编号 关闭的灯 记为:open:false
-  // 第二个人 遇到编号为2则做相反操作
-  // 如果open为false 则将open置为true
-  // 输出 如果open为false 则输出记录的编号
-  
   }
-  for(var i = 1;i <= m;i++){
-  while(i*j<=n){
-if(open==-1){
-  console.log(j)
-}
-  }
-}
+  console.log(result)
 <script/>
-  
-</script>
+
+
 <script id="ch0105/32" type="1">
   var p1 = 1
   var q1 = 2
@@ -991,7 +986,8 @@ console.log(Sn.toFixed(4))
     Sn = Sn +an
   }
   console.log(Sn.toFixed(4))
-</script>
+</scrip>
+
 <script id="ch0105/34" type="1">
   // debugger
 var n = +prompt()
@@ -1007,6 +1003,9 @@ while(num-1!=0){
 sum += jiecheng
 }
 console.log(sum)
+</script>
+<script>
+
 </script>
 <script id="ch0105/35" type="1">
   var n = +prompt()
@@ -1028,7 +1027,7 @@ console.log(e.toFixed(10))
   var n = +prompt()
   var Sn=1 
 var an
-  for(var i = 1;i<=4;i++){
+  for(var i = 1;i<=n;i++){
     var num=i
     an=x**(num)
       Sn+=an
@@ -1106,25 +1105,31 @@ for(var i = L;i<=R;i++){
 }
 console.log(sum)
 </script>
-<script id="ch0105/42" type="no">
+<script id="ch0105/42" type="ok">
+  // debugger
   var h = +prompt()//高度
   var w = +prompt()//宽度
-  var s = prompt()//绘画符
-  var a = prompt()//空心0实心1
-if (a == 0){
-  for(var i =1;i<=h;i++){
-    
-    for(var n = 1;n<=w;n++){
-      if(w%7==0)
-      document.write('\n')
-    document.write('@')
-
-    }
+  var char = prompt()//绘画符
+  var fill = +prompt()//空心0实心1
+  var result=''
+  for(var i =0;i<h;i++){
+    for(var j=0;j<w;j++){
+if(i==0||i==h-1||j==0||j==w-1){
+  result+=char
+}else{
+  if(fill){
+    result+=char
+  }else {
+    result+=' '//拼接空格
   }
-
 }
-
+}
+result+='\n'
+    }
+  
+  console.log(result)
 </script>
+
 <script id="ch0105/43">
   var n=+prompt()
   //先将质数依次输出,如果能被该质数整除 则跳出循环 输出另一个除数
@@ -1143,26 +1148,31 @@ else{
 }
 </script>
 
-<script id="ch0105/444" type="no">
-  debugger
-  var n=+prompt()
-  var i 
-  var zhishu
-  var num=0
-  false=0
-  while(num<=n){
-  for(i=2;;i++){
-  for(var j=2;j<i;j++){
-    if(i%j==0){
-   false=0
+<script id="ch0105/44" type="ok">
+  <script>
+    //判断是否是素数
+  function isPrime(n) {
+  for(var j=2;j<=n/2;j++){
+    if(n%j==0){
+      return false
     }
   }
-  if (false!=0){
-    num++
+  return true
   }
+  var n = +prompt()
+  var c=0
+  for(var i = 2; ; i++) {
+  
+    if(isPrime(i)){
+    //如果这个数是素数
+      c++
+    if(c==n){
+    console.log(i)
+      break
+    }
+    }
   }
-  }
-  console.log(zhishu)
+  </script>
   </script>
 <script id="ch0105/45">
   // debugger
