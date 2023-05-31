@@ -10,7 +10,7 @@ class MyMap{
       this._vals[keyIdx]=val
     }else{
       this._keys.push(key)
-      this._vals.push(key)
+      this._vals.push(val)
     }
   }
 
@@ -57,7 +57,7 @@ add(val){
     this.elements.push(val)
   }
 }
-remove(val){
+delete(val){
   if(this.has(val)){
     var idx = this.elements.indexOf(val)
     this.elements.splice(idx,1)//从下标idx开始 包含idx 删除1个元素
@@ -130,8 +130,8 @@ minus(c){
 }
 
 mul(c){
-  var real = this.real*c.real+this.imag*c.imag
-  var imag = this.real*c.imag-c.real*this.imag
+  var real = this.real*c.real-this.imag*c.imag
+  var imag = this.real*c.imag+c.real*this.imag
   return new Complex(real,imag)
  }
 
@@ -144,6 +144,7 @@ mul(c){
   return new Complex(real,imag)
  }
 }
+
 
 /**
  * Stack
@@ -158,7 +159,7 @@ class Stack{
     this.head=null
     this.nodeStack=0
   }
-  add(val){
+  push(val){
     this.nodeStack++
     var node = {
       val,next:null
@@ -185,6 +186,8 @@ class Stack{
    return this.nodeStack
   }
 }
+var s = new Stack()
+
 
 /**
  * Queue
@@ -245,56 +248,56 @@ at()
 size
 */
 class LinkedList{
-constructor(){
-  this.head=null
-  this.tail=null
-}
-append(val){
-var node={
-  val,next:null
-}
-if(this.head==null){
-  this.head=this.tail=node
-  return 
-}else{
-  this.tail.next=node
-  this.tail=node
-  return 
-}
-}
-
-//往链表的头部增加一个元素
-prepend(val){
-var node={
-  val,next:null
+  constructor(){
+    this.head=null
+    this.tail=null
+  }
+  append(val){
+  var node={
+    val,next:null
   }
   if(this.head==null){
     this.head=this.tail=node
     return 
   }else{
-    node.next=this.head
-    this.head=node
+    this.tail.next=node
+    this.tail=node
     return 
   }
-}
+  }
 
-at(idx){
-var count=1
-var p =this.head
-while(count<idx){
-p=p.next
-count++
-}
-return p.val
-}
+  //往链表的头部增加一个元素
+  prepend(val){
+  var node={
+    val,next:null
+    }
+    if(this.head==null){
+      this.head=this.tail=node
+      return 
+    }else{
+      node.next=this.head
+      this.head=node
+      return 
+    }
+  }
 
-get size(){
-var p=this.head
-var l=0
-while(p){
-p=p.next
-l++
-}
-return l
-}
+  at(idx){
+  var count=0
+  var p =this.head
+  while(count<idx){
+  p=p.next
+  count++
+  }
+  return p.val
+  }
+
+  get size(){
+  var p=this.head
+  var l=0
+  while(p){
+  p=p.next
+  l++
+  }
+  return l
+  }
 }
