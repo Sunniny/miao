@@ -1,6 +1,6 @@
 var sunniny = {
     //, null, 0, "", undefined, and NaN
-  compack:function(array){
+  compact:function(array){
  if(!Array.isArray(array)){
   return []
  }
@@ -17,7 +17,7 @@ return result
   chunk:function(array,size){
     var result = []
     for(var i = 0;i<array.length;i+=size){
-      result.push(array.silce(i,size))
+      result.push(array.slice(i,size))
     }
     return result
   },
@@ -38,7 +38,7 @@ return array
 
 drop:function(array,deleteCount){
   if(deleteCount!=undefined){
-array.splice(a,deleteCount)
+  array.splice(0,deleteCount)
   }else{
     array.splice(0,1)
   }
