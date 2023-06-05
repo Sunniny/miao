@@ -1,23 +1,23 @@
 var sunniny = {
     //, null, 0, "", undefined, and NaN
   compact:function(array){
- if(!Array.isArray(array)){
-  return []
- }
-var result = []
-for(var i =0;i<array.length;i++){
-  if(array[i]){
-    result.push(array[i])
-  }
-}
-return result
+    if(!Array.isArray(array)){
+      return []
+    }
+    var result = []
+    for(var i =0;i<array.length;i++){
+      if(array[i]){
+        result.push(array[i])
+      }
+    }
+    return result
 
 },
   
   chunk:function(array,size){
     var result = []
     for(var i = 0;i<array.length;i+=size){
-      result.push(array.slice(i,size))
+      result.push(array.slice(i,i+size))
     }
     return result
   },
