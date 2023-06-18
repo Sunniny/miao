@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #sun,#earth,#moon{
+      position: fixed;
+      aspect-ratio: 1/1;
+    }
+    #sun {
+      height: 50px;
+      background-color: gold;
+      border-radius: 99999px;
+      margin-top: -25px;
+      margin-left: -25px;
+    }
+    #earth{
+      height: 30px;
+      background-color: blue;
+      border-radius: 99999px;
+      margin-top: -15px;
+      margin-left: -15px;
+    }
+    #moon{
+      height: 15px;
+      background-color: moccasin;
+      border-radius: 99999px;
+      margin-top: -7.5px;
+      margin-left: -7.5px;
+    }
+  </style>
+</head>
+<body>
+  <span id="sun"></span>
+  <span id="earth"></span>
+  <span id="moon"></span>
+</body>
+<script>
+  //获取到三个元素,用于操作
+  var sun = document.querySelector("#sun")
+  var earth = document.querySelector("#earth")
+  var moon = document.querySelector("#moon")
+  //将animate函数作为参数 传给 requestAnimationFrame函数
+  requestAnimationFrame(function animation(time){
+    var sunAngle = time/2000
+    var sunX = Math.cos(sunAngle)*100 +innerWidth / 2+"px"
+    var sunY = Math.sin(sunAngle)*100 +innerHeight / 2+"px"
+    sun.style.left = sunX
+    sun.style.top = sunY 
+
+    var earthAngle = time / 1000
+    var earthX=parseFloat(sunX) +Math.cos(earthAngle)*200+ "px"
+    var earthY =parseFloat(sunY)+ Math.sin(earthAngle)*200+ "px"
+    earth.style.left = earthX
+    earth.style.top = earthY
+
+    var moonAngle = time / 500
+    var moonX=parseFloat(earthX) +Math.cos(moonAngle)*50+ "px"
+    var moonY =parseFloat(earthY)+ Math.sin(moonAngle)*50+ "px"
+    moon.style.left = moonX
+    moon.style.top = moonY
+
+
+    requestAnimationFrame(animation)
+  })
+
+
+</script>
+</html>
