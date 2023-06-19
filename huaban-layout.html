@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
-    *{
-      background: rgba(0,0,0,0.1);
+    html{
+      background-color: black;
+      overflow-y: scroll;
     }
     section>div{
       flex: 1;
@@ -15,9 +16,15 @@
       display: flex;
       gap:10px;
       align-items: flex-start;
-      width:600px;
       margin:auto
-
+    }
+    img{
+      display: block;
+      outline:1px solid white;
+      outline-offset: 1px;
+      margin-bottom: 10px;
+      position: relative;
+      transition: 0.3s;
     }
   </style>
 </head>
@@ -356,45 +363,114 @@
         "width": 775,
         "height": 1170
       }
-    ]
-
-
-//  var divs = [...document.querySelector("div")]
+]
+//通过以下添加,现在数组是原来的16倍了
+cats = [...cats,...cats]//两倍
+cats = [...cats,...cats]//4倍
+cats = [...cats,...cats]//8倍
+cats = [...cats,...cats]//16倍
+cats = [...cats,...cats]//32倍
+cats = [...cats,...cats]//64倍
 
 //动态添加列数
-//1.拿到窗口的最多列数
-var columns = Math.floor((window.innerWidth-40) / 180)
-function run(){
 
-  var section = document.querySelector("section")
-  section.style.width= columns*180+(columns-1)*10 +"px"
+var section = document.querySelector("section")
+prevWidth=0//初始值可以随便给一个 但是不能等于window.innerWidth
+
+function run(){
+  //如果窗口宽度不变的话,不用再重新计算动画.
+  if(window.innerWidth==prevWidth){
+    return 
+  }else{
+    prevWidth = window.innerWidth
+  }
+  //会统计两个函数之间的调用时间
+  console.time('layout')
+  //列宽
+  //1.拿到窗口的最多列数
+  var columns = Math.floor(window.innerWidth / 180)
+  // section.style.width= columns*columnWidth+(columns-1)*10 +"px"
   section.innerHTML=''
   for(var i = 0;i<columns;i++){
   section.append(document.createElement("div"))
   }
   
   var divs = [...document.getElementsByTagName("div")]
-   
+  var columnWidth = divs[0].offsetWidth
+   var divHeights = Array(columns).fill(0)//记录每个div的高度eg:[9,77,67,54]
+  //将所有需要填充的图片,按照合适的位置,先存放在一个数组中
+  var divImgs = Array(columns).fill(0).map(it=>[])//先填充再map 这样不是同一个数组.每个数组保存不同的图片  [[],[] ,[],[]]
+
+
   for(var cat of cats){
-  
-   var div = divs.reduce((min,div)=>{
-    if(div.offsetHeight<min.offsetHeight){
-      return div
-    }else{
-      return min
-    }
-   })
+  //得到最矮的div元素,以往里添加一张元素
+    var minDivHeight = Math.min(...divHeights)//
+    var minIdx = divHeights.indexOf(minDivHeight)
+   var  div = divs[minIdx]
+   //以下注释代码,因为频繁的读取dom 所以会导致加载很慢
+  //  var div = divs.reduce((min,div)=>{
+  //   if(div.offsetHeight<min.offsetHeight){
+  //     return div
+  //   }else{
+  //     return min
+  //   }
+  //  })
    
     var img = document.createElement("img")
     img.src = cat.fullUrl
-    img.width = div.offsetWidth
+    img.width = columnWidth
     img.height = img.width * cat.height / cat.width
-    img.style.marginBottom="10px"
-    div.append(img)
+    divHeights[minIdx]=divHeights[minIdx]+img.height + 10//记录对应div的累计高度?
+    // div.append(img)
+    divImgs[minIdx].push(img)
    }
+// debugger
+   divImgs.forEach((imgs,idx)=>{
+    divs[idx].append(...imgs)
+   })
+
+  console.timeEnd('layout')//对照第一行的
+
 }
  run()
- window.onresize=run
+ window.onresize = run
+
+
+
+ //放大图片
+ //1.获取section
+ var section = document.querySelector("section")
+ var  z = 5
+ section.onclick = function(e){
+  if(e.target.matches('img')){
+    var img = e.target
+
+    if(img.style.transform==''){
+
+      var box = img.getBoundingClientRect()
+      //元素的中心点
+      var cx = box.left + box.width / 2
+      var cy = box.top + box.height / 2
+      //屏幕的中心点
+      var vx = window.innerWidth / 2
+      var vy = window.innerHeight / 2
+  
+      //移动的距离
+      var movex = vx - cx
+      var movey = vy - cy
+      //放大的倍数
+      var zoomx = window.innerWidth / box.width
+      var zoomy = window.innerHeight / box.height
+      img.style.zIndex=z++
+      img.style.transform = `translate(${movex}px,${movey}px) scale(${Math.min(zoomx,zoomy)})`
+      img.style.boxShadow = "0 0 0 9999px black"
+    }else{
+      img.style.transform=''
+      img.style.boxShadow =''
+    }
+  }
+ }
+
 </script>
 
 </html>
