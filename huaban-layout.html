@@ -364,13 +364,11 @@
         "height": 1170
       }
 ]
-//通过以下添加,现在数组是原来的16倍了
-cats = [...cats,...cats]//两倍
-cats = [...cats,...cats]//4倍
-cats = [...cats,...cats]//8倍
-cats = [...cats,...cats]//16倍
-cats = [...cats,...cats]//32倍
-cats = [...cats,...cats]//64倍
+//通过以下添加,现在数组是原来的8倍了
+// cats = [...cats,...cats]//两倍
+// cats = [...cats,...cats]//4倍
+// cats = [...cats,...cats]//8倍
+
 
 //动态添加列数
 
@@ -397,7 +395,7 @@ function run(){
   
   var divs = [...document.getElementsByTagName("div")]
   var columnWidth = divs[0].offsetWidth
-   var divHeights = Array(columns).fill(0)//记录每个div的高度eg:[9,77,67,54]
+  var divHeights = Array(columns).fill(0)//记录每个div的高度eg:[9,77,67,54]
   //将所有需要填充的图片,按照合适的位置,先存放在一个数组中
   var divImgs = Array(columns).fill(0).map(it=>[])//先填充再map 这样不是同一个数组.每个数组保存不同的图片  [[],[] ,[],[]]
 
