@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .draggable{
+    position: fixed;
+    width: 100px;
+    height: 100px;
+  }
+  .draggable>h1{
+    margin: 0;
+    text-align: center;
+    font-size: 14px;
+    background-color: #fff8;
+    cursor: move;
+  }
+  .resizer{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    cursor: nwse-resize;
+    border: solid 5px transparent;
+    border-bottom: 5px gray solid;
+    border-right:5px gray solid;
+  }
+</style>
+<body>
+    <div class="draggable" style="width:200px;height:120px;left:0;top:0;background-color: aquamarine;">
+    <h1>窗口1</h1>
+    <span class="resizer" ></span>
+    </div>
+    <div class="draggable" style="width:200px;height:120px;left:210px;top:0;background-color: pink;">
+      <h1>窗口2</h1>
+    <span class="resizer"></span>
+    </div>
+    <div class="draggable" style="width:200px;height:120px;left:420px;top:0;background-color: yellow;">
+      <h1>窗口3</h1>
+      <span class="resizer"></span>
+    </div>
+  <script>
+    //鼠标起始位置
+    var startX = 0
+    var startY = 0
+    var el = null
+    //元素起始位置
+    var elStartX = 0
+    var elStartY = 0
+    z = 10
+
+    //元素的宽高
+    elStartWidth = 0
+    elstartHeight = 0
+
+    //放大初始值
+
+    var currenAction = 'resizer'
+
+  window.addEventListener('mousedown',e=>{
+    if(e.target.matches('.draggable, .draggable *')){
+      e.target.closest('.draggable').style.zIndex = z++
+    }
+    if(e.target.matches('.draggable>h1')){
+      e.preventDefault()//防止选中文字而出现一个禁止的标志
+      el = e.target.closest('.draggable')//获取到e.target最近的满足选择器 draggable的祖先元素
+      el.style.zIndex = z++
+      startX = e.clientX
+      startY = e.clientY
+      elStartX = parseFloat(el.style.left)
+      elStartY = parseFloat(el.style.top)
+      window.addEventListener('mousemove',onMove)
+    }
+
+    if(e.target.matches('.resizer')){
+      e.preventDefault()
+      el = e.target.closest('.draggable')
+      startX = e.clientX
+      startY = e.clientY
+      elStartHeight = parseFloat(el.style.height)
+      elStartWidth =parseFloat(el.style.width)
+      window.addEventListener('mousemove',onResizer)
+    }
+  })
+  function onMove(e){
+    if(e.which == 0||e.buttons == 0){
+      window.removeEventListener('mousemove',onMove)
+    }else{
+      var moveX = e.clientX - startX
+      var moveY = e.clientY - startY
+
+      var left =  elStartX + moveX
+      var top = elStartY + moveY
+
+      if(left < 0 || left <40){
+        left = 0
+      }
+      if(top < 0||top < 40){
+        top = 0
+      }
+      if(left > window.innerWidth - el.offsetWidth ||left > window.innerWidth - el.offsetWidth - 40 ){
+        left = window.innerWidth - el.offsetWidth
+      }
+      if(top > window.innerHeight - el.offsetHeight || top > window.innerHeight - el.offsetHeight - 40 ){
+        top = window.innerHeight - el.offsetHeight
+      }
+      el.style.left = left +'px'
+      el.style.top = top +'px'
+    }
+  }
+
+  function onResizer(e){
+    if(e.which == 0||e.buttons == 0){
+      window.removeEventListener('mousemove',onResizer)
+    }else{
+      var moveX = e.clientX - startX
+      var moveY = e.clientY - startY
+
+      var width = elStartWidth + moveX
+      var height = elStartHeight + moveY 
+
+      if(width < 100){
+        width = 100
+      }
+      if(height <60){
+        height = 60
+      }
+      el.style.width = width + 'px'
+      el.style.height = height + 'px'
+
+  }
+  }
+  </script>
+</body>
+</html>
+
