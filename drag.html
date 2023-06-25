@@ -94,16 +94,16 @@
       var left =  elStartX + moveX
       var top = elStartY + moveY
 
-      if(left < 0 || left <40){
+      if(left <40){
         left = 0
       }
-      if(top < 0||top < 40){
+      if(top < 40){
         top = 0
       }
-      if(left > window.innerWidth - el.offsetWidth ||left > window.innerWidth - el.offsetWidth - 40 ){
+      if(left > window.innerWidth - el.offsetWidth - 40 ){
         left = window.innerWidth - el.offsetWidth
       }
-      if(top > window.innerHeight - el.offsetHeight || top > window.innerHeight - el.offsetHeight - 40 ){
+      if(top > window.innerHeight - el.offsetHeight - 40 ){
         top = window.innerHeight - el.offsetHeight
       }
       el.style.left = left +'px'
