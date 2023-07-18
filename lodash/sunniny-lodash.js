@@ -229,6 +229,22 @@ map:function(predicate,target){
   return result
   }
 },
+//13 fromPairs(pairs)
+fromPairs: function(pairs) {
+  var obj = {}
+  for(var key of pairs){
+    obj[key[0]] = key[1]
+  }
+  return obj
+},
+//14 toPairs(object)
+toPairs: function(object) {
+  var ary = []
+  for(var key in object) {
+    ary.push([key,object[key]])
+  }
+  return ary
+} 
 
 }
 
