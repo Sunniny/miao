@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <button onclick="downloadOneByOneSync()">同步一张一张</button> -->
+  <button onclick="downloadOneByOneSync()">同步一张一张</button>
+  <button onclick="downloadOneByOne()">异步一张一张</button>
+  <button onclick="downloadMaxThree()">最多同时下载三张</button>
+  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas earum sequi optio doloremque? Tempora, consequatur? Odio asperiores quidem repellat natus amet repellendus nesciunt accusantium? Id esse qui alias reprehenderit ad.</p>
+
+  <script>
+    var catsUrl = "https://xieranmaya.github.io/images/cats/cats.json"
+
+   //get函数
+    function get(url, callback) {
+      var xhr = new XMLHttpRequest()
+      xhr.open('GET', url)
+      xhr.onload = () => {
+        callback(xhr.responseText)
+      }
+      xhr.send()
+    }
+
+    //同步下载,下载过程中页面会卡死无响应.
+    function downLoadImgSync(url) {
+      var xhr = new XMLHttpRequest()
+      xhr.open('get', url, false)
+      xhr.send()
+    }
+
+    //异步下载图片函数
+    function downLoadImage(url, callback) {
+      var img = new Image()
+      img.onload = () => {
+        callback()
+      }//绑事件最好写在开始触发下载的代码之前,防止事件没绑定上,已经下载成功,而不触发事件
+      img.src = url
+  
+    }
+    //同步函数
+    function downloadOneByOneSync() {
+      get(catsUrl, data => {
+        var cats = JSON.parse(data)
+
+        for(var cat of cats) {
+          downLoadImgSync(cat.fullUrl)
+        }
+      })
+    }
+    //异步函数
+    function downloadOneByOne() {
+      get(catsUrl, data => {
+        var cats = JSON.parse(data)
+        cats = cats.slice(0,15)
+        var i = 0
+        downloadOneImg()
+
+        function downloadOneImg() {
+          if(i < cats.length) {
+            downLoadImage(cats[i++].fullUrl, () => {
+              downloadOneImg()
+            })
+          }else {
+            console.log('串行下载完成')
+          }
+        }
+      })
+    }
+
+    //最多同时下载三张
+    function downloadMaxThree() {
+      get (catsUrl, (data) => {
+        var cats = JSON.parse(data).slice(0,10)
+        var i = 0
+        var sum = 0 //目前下载量
+
+        downloadThree()
+        
+        function downloadThree() {
+          for(var i = 0; i < 3; i++)
+          downloadOne()
+        }
+
+        function downloadOne() {
+          if(i < cats.length){
+            downLoadImage(cats[i++].fullUrl, () => {
+              sum++
+              downloadOne()
+              if(sum == cats.length) {
+                console.log('下载完成')
+              }
+            })
+          }
+        }
+      })
+    }
+  </script>
+</body>
+</html>
