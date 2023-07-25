@@ -241,10 +241,71 @@ fromPairs: function(pairs) {
 toPairs: function(object) {
   var ary = []
   for(var key in object) {
-    ary.push([key,object[key]])
+    ary.push([key,obj[key]])
   }
   return ary
-} 
+},
+//15head
+head: function(array) {
+  if(array[0] == null) {
+    return undefined
+  }else {
+    return array[0]
+  }
+},
+//16indexOf
+indexOf: function(array, value, fromIndex = 0) {
+  if(fromIndex < 0){
+    fromIndex = 0
+  }
+  for(var i = fromIndex; i < array.length; i++) {
+    if(array[i] == value){
+      return i
+    }
+  }
+  return -1
+},
+// lastIndexOf--17
+lastIndexOf: function(array, value, fromIndex=array.length-1){
+  for(var i = fromIndex; i > 0; i--){
+    if(array[i] == value){
+      return i
+    }
+   }
+  return -1
+},
+//initial--18
+initial: function(array){
+  return array.slice(0,array.length)
+},
+//join--19
+join: function(array, separator=','){
+  var str = ''
+  for(var item of array){
+    str += `${item}`+ separator
+  }
+  return str
+},
+//last==20
+last: function(array){
+  if(!array){
+    return 
+  }else{
+    return array[array.length - 1]
+  }
+},
+//pull=21
+pull: function(array, ...vals){
+  for(var one of vals){
+    for(var i = 0; i < array.length; i++){
+      if(one == array[i]){
+        array.splice(i,1)
+      }
+    }
+  }
+  return array
+}
+
 
 }
 
