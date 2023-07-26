@@ -276,7 +276,7 @@ lastIndexOf: function(array, value, fromIndex=array.length-1){
 },
 //initial--18
 initial: function(array){
-  return array.slice(0,array.length)
+  return array.slice(0,array.length-1)
 },
 //join--19
 join: function(array, separator=','){
@@ -284,7 +284,7 @@ join: function(array, separator=','){
   for(var item of array){
     str += `${item}`+ separator
   }
-  return str
+  return str.slice(0,str.length - 1)
 },
 //last==20
 last: function(array){
