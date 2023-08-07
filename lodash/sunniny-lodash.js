@@ -284,7 +284,7 @@ join: function(array, separator=','){
   for(var item of array){
     str += `${item}`+ separator
   }
-  return str.slice(0,str.length - 1)
+  return str.slice(0,str.length - 1)  
 },
 //last==20
 last: function(array){
@@ -304,8 +304,61 @@ pull: function(array, ...vals){
     }
   }
   return array
-}
-
+},
+//reverse===22
+reverse: function(array) {
+  var ary = []
+  for(var i = array.length - 1; i >=0; i--) {
+    ary.push(array[i])
+  }
+  return ary
+},
+//every=23
+every: function(collection,predicate) {
+  var func = turnPredicateToFuntion(predicate)
+  for(var item of collection) {
+   if(!func(item)) {
+     return false
+   }
+  }
+ return true
+},
+//24 every
+some: function(collection,predicate) {
+  var func = turnPredicateToFuntion(predicate)
+  for(var item of collection) {
+    if(func(item)) {
+      return true
+    }
+  }
+  return false
+},
+//25 countBy
+countBy: function(collection, iteratee){
+  var obj ={}
+  var iteratee = turnPredicateToFuntion(iteratee)
+  for(var item of collection) {
+    if(iteratee(item) in obj){
+      obj[iteratee(item)]++
+    }else {
+      obj[iteratee(item)] =1
+    }
+  }
+  return obj
+  },
+  //26 groupBy
+  groupBy: function(collection, iteratee) {
+    var obj = {}
+    var iteratee = turnPredicateToFuntion(iteratee)
+    for(var item of collection) {
+      if(iteratee(item) in obj) {
+        obj[iteratee(item)].push(item)
+      }else{
+        obj[iteratee(item)] = [item]
+      } 
+    }
+    return obj
+  }
 
 }
 
