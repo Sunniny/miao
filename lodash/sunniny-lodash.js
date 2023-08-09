@@ -208,27 +208,27 @@ filter:function(array,predicate){
   return result
 },
 // 12 map
-map:function(predicate,target){
-  var result = []
-  if(Array.isArray(predicate)&&typeof target === 'string'){
-    for(var item of(predicate)){
-      if(item[target])
-      result.push(item[target])
-    }
-  }
-  if(Array.isArray(predicate)){
-    for(var item of predicate){
-      result.push(target(item))
-     }
-     return result
-  }
-  if(typeof predicate === 'object'){
-    for(var key in predicate){
-      result.push(target(predicate[key]))
-     }
-  return result
-  }
-},
+// map:function(predicate,target){
+//   var result = []
+//   if(Array.isArray(predicate)&&typeof target === 'string'){
+//     for(var item of(predicate)){
+//       if(item[target])
+//       result.push(item[target])
+//     }
+//   }
+//   if(Array.isArray(predicate)){
+//     for(var item of predicate){
+//       result.push(target(item))
+//      }
+//      return result
+//   }
+//   if(typeof predicate === 'object'){
+//     for(var key in predicate){
+//       result.push(target(predicate[key]))
+//      }
+//   return result
+//   }
+// },
 //13 fromPairs(pairs)
 fromPairs: function(pairs) {
   var obj = {}
@@ -358,7 +358,40 @@ countBy: function(collection, iteratee){
       } 
     }
     return obj
+  },
+  //27.keyBy
+keyBy: function(collection, iteratee) {
+  var iteratee = turnPredicateToFuntion(iteratee)//返回需要的功能函数
+  var obj = {}//用于返回的最终对象
+  for(var item of array) {
+    obj[iteratee(item)] = item
   }
+  return obj
+},
+//28:forEach 
+forEach:function(collection,iteratee){
+  for(var key in  collection) {
+    iteratee(collection[key], key,collection)
+  }
+  return iteratee
+},
+//29:map
+map: function(collection,iteratee) {
+  var iteratee = turnPredicateToFuntion(iteratee)
+  var array = []
+  for(key in collection) {
+    array.push(iteratee(collection[key]))
+  }
+  return array
+},
+//30reduce
+reduce: function(collection,iteratee,aaccumulator=0) {
+  var res = aaccumulator
+  for(var key in collection) {
+    res = iteratee(res, collection[key], key)
+  }
+  return res
+},
 }
 
 
