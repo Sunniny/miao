@@ -363,7 +363,7 @@ countBy: function(collection, iteratee){
 keyBy: function(collection, iteratee) {
   var iteratee = turnPredicateToFuntion(iteratee)//返回需要的功能函数
   var obj = {}//用于返回的最终对象
-  for(var item of array) {
+  for(var item of collection) {
     obj[iteratee(item)] = item
   }
   return obj
@@ -373,7 +373,7 @@ forEach:function(collection,iteratee){
   for(var key in  collection) {
     iteratee(collection[key], key,collection)
   }
-  return iteratee
+  return collection
 },
 //29:map
 map: function(collection,iteratee) {
