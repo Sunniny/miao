@@ -241,7 +241,7 @@ fromPairs: function(pairs) {
 toPairs: function(object) {
   var ary = []
   for(var key in object) {
-    ary.push([key,obj[key]])
+    ary.push([key,object[key]])
   }
   return ary
 },
@@ -379,8 +379,14 @@ forEach:function(collection,iteratee){
 map: function(collection,iteratee) {
   var iteratee = turnPredicateToFuntion(iteratee)
   var array = []
-  for(key in collection) {
-    array.push(iteratee(collection[key]))
+  if(Array.isArray(collection)){
+    for(var i=0; i<collection.length; i++){
+      array.push(iteratee(collection[i], i, collection))
+    }
+  }else if(typeof collection == 'object'){
+    for(key in collection) {
+      array.push(iteratee(collection[key]))
+    }
   }
   return array
 },
