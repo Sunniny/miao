@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .completed {
+    text-decoration: line-through;
+    opacity: 0.5;
+  }
+  ul.visible-active li.completed {
+    display: none;
+  }
+  ul.visible-completed li:not(.completed) {
+    display: none;
+  }
+</style>
+<body>
+ <div class="container">
+    <h1>计划清单</h1>
+    <div>
+      <input type="checkbox" class="toggle-all" v-bind:checked="todos.length&&todos.every(it => it.completed)" @click="toggleAll()">
+        <input type="text" @keyup="addTodo($event)" placeholder="请输入待办事项...">
+    </div>
+    <ul id="todo-list" :class="`visible-${visibleTodos}`">
+      <li :class="todo.completed ? 'completed' : 'active'" v-for="(todo, idx) of onlyComputed(todos)">
+        <input type="checkbox" v-bind:checked="todo.completed" @change="changeTodoState(idx)">
+        <!-- <input type="text" readonly value="eat"> -->
+        <span v-show="editIdx !== idx" @dblclick="edit(idx)">{{ todo.content }}</span>
+        <input type="text" v-show="editIdx == idx"
+        @keyup.enter="todo.content = $event.target.value.trim(); editIdx = -1" 
+        @blur="todo.content = $event.target.value.trim(); editIdx = -1"
+        @escape = "editIdx = -1"
+        :value="todo.content">
+        <button @click="deleteTodo(idx)">&times;</button>
+      </li>
+    </ul>
+    <div>
+      <!-- 标签之间的插值 用双花括号 -->
+      <span><em>{{ todos.filter(it => !it.completed).length }}</em>&nbsp项待办事项</span>
+      <div class="visible-select">
+        <label><input type="radio" value="all" @click="visibleTodos ='all'" name="visible-todos" checked> 所有事项</label>
+        <label><input type="radio" value="active" @click="visibleTodos ='active'" name="visible-todos" > 未完成</label>
+        <label><input type="radio" value="completed" @click="visibleTodos ='completed'"  name="visible-todos" > 已完成</label>
+      </div>
+      <button  @click="clearCompleted()" v-show="todos.some(todo => todo.completed)" >清除已完成</button>
+    </div> 
+ </div>
+
+<div class="container-sum">
+  <button @click="increase()" :tittle="count">{{count}}</button>
+</div>
+</body>
+<script src="./vue-2.7.14.js"></script>
+<script>
+  var app = new Vue({
+    el: '.container',
+    data: {
+      todos: JSON.parse(localStorage.getItem('todos'))?? [
+        {
+        content: 'eat',
+        completed: true,
+      }, 
+      {
+        content: 'drink',
+        completed: false,
+      },
+       {
+        content: 'sleep',
+        completed: true,
+      }
+    ],
+    visibleTodos: 'all',
+    editIdx : -1,
+    },
+    watch: {
+      todos: {
+        deep: true,
+        handler: function() {
+          localStorage.setItem('todos', JSON.stringify(this.todos))
+        }
+      }
+    },
+    methods: {
+      edit(idx) {
+        this.editIdx = idx
+      },
+      deleteTodo(idx) {
+      this.todos.splice(idx, 1)
+     },
+     changeTodoState(idx) {
+      this.todos[idx].completed = !this.todos[idx].completed 
+     },
+     toggleAll() {
+      if(this.todos.every(it => it.completed)) {
+        this.todos.forEach(it => 
+          it.completed = false)
+        }else{
+          this.todos.forEach(it => {
+          it.completed = true
+        }
+        );
+      }
+     },
+     addTodo(e) {
+      if(e.key == 'Enter') {
+        var text = e.target.value.trim()
+        if(text) {
+         this.todos.push({
+          content: text,
+          completed: false
+         })
+        }
+        e.target.value = ''
+      }
+     },
+     clearCompleted() {
+        this.todos = this.todos.filter(it => !it.completed)
+     },
+     //仅计算需要显示的li
+     onlyComputed(todos) {
+      if(this.visibleTodos == 'completed'){
+        return  this.todos.filter(it => 
+          it.completed
+        )
+      }else if(this.visibleTodos == 'active') {
+          return  this.todos.filter(it => 
+          !it.completed
+          )}
+        return this.todos
+     }
+    
+    }
+  })
+  var app2 = new  Vue({
+    el:'.container-sum',
+    data: {
+      count:0
+    },
+    methods: {
+      increase() {
+        this.count++
+      }
+    }
+
+  })
+</script>
+</html>
