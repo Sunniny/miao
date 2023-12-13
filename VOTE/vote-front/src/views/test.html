@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+<script>
+  const xhr = new XMLHttpRequest()
+  console.log(xhr.readyState)
+  xhr.onReadyStateChange = () => {
+    if(xhr.readyState !== 4) return;
+    
+    if(xhr.status >= 200 && xhr.status<300){
+    console.log(xhr.readyState)
+
+      console.log(xhr.responseText)
+    }
+  }
+  xhr.open('GET','text.json','true')
+xhr.send(null)
+
+
+function ajax(url) {
+  const p = new Promise((resolve, reject) => {
+    const xhr = XMLHttpRequest()
+    xhr.open('GET','url',true)
+    xhr.onReadyStateChange = () => {
+      if(xhr.readyState === 4) {
+        if(xhr.status > 200 && xhr.status < 300 || xhr.statue == 304) {
+          resolve(
+            JSON.parse(xhr.response)
+          )
+        }else {
+          reject(
+            new Error('response error')
+          )
+        }
+      }
+    }
+    xhr.send(null)
+  })
+  return p
+}
+ajax(url).then(res => console.log(res)).chatch(err => console.log(err))
+
+</script>

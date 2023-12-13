@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 所有的文本框 统一样式 @apply是tailwind的专用语法 后面跟的是类名 */
+input {
+  /* @apply border rounded focus:ring outline-none; */
+}
